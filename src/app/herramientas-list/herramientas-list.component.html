@@ -1,0 +1,28 @@
+<table class = "table text-center">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let herramienta of herramientas">
+            <td><img class=" img-thumbnail" [src]="herramienta.image" [alt]="herramienta.name"></td>
+            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.name}}</td>
+            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.type}}</td>
+            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.price | currency}}</td>
+            <td><span class="badge text-bg-warning" *ngIf="herramienta.stock ==0;">SIN STOCK</span>
+                <span class="badge bg-secondary" *ngIf="herramienta.stock !=0;">{{herramienta.stock}}</span>
+            </td>
+            <td> Boton - y +</td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
