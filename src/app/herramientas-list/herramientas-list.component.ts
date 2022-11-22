@@ -52,4 +52,23 @@ export class HerramientasListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  upQuantity(herramienta: Herramienta): void {
+
+    if (herramienta.quantity < herramienta.stock)
+    herramienta.quantity ++;
+
+  }
+
+  donwQuantity(herramienta: Herramienta): void {
+    if (herramienta.quantity >0)
+    herramienta.quantity --;
+
+  }
+  onChangeQuantity (event: any): void {
+    if ((event.key > "9") ||(event.key < "0")) {
+      alert("Por favor ingrese un numero");
+      event.preventDefault ();
+    }
+  }
+
 }

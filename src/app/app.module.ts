@@ -9,6 +9,7 @@ import { HerramientasBuyComponent } from './herramientas-buy/herramientas-buy.co
 import { HerramientasCartComponent } from './herramientas-cart/herramientas-cart.component';
 import { HerramientasListComponent } from './herramientas-list/herramientas-list.component';
 import { HerramientasInputComponent } from './herramientas-input/herramientas-input.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HerramientasInputComponent } from './herramientas-input/herramientas-in
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

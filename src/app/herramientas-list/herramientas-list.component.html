@@ -19,9 +19,14 @@
             <td><span class="badge text-bg-warning" *ngIf="herramienta.stock ==0;">SIN STOCK</span>
                 <span class="badge bg-secondary" *ngIf="herramienta.stock !=0;">{{herramienta.stock}}</span>
             </td>
-            <td> Boton - y +</td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="donwQuantity(herramienta)">-</button>
+                <input type="text" 
+                [(ngModel)]="herramienta.quantity"
+                (keyup)="onChangeQuantity($event)">
+                <button type="button" class="btn btn-success btn-sm" (click)="upQuantity(herramienta)">+</button>
+            </td>
             <td>
-                <button type="button" class="btn btn-success btn-sm">Comprar</button>
+                <button type="button" class="btn btn-light btn-sm">Comprar</button>
             </td>
         </tr>
     </tbody>
