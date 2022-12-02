@@ -1,3 +1,4 @@
+<h4 class="Encabezado">Herramientas</h4>
 <table class = "table text-center">
     <thead>
         <tr>
@@ -13,21 +14,32 @@
     <tbody>
         <tr *ngFor="let herramienta of herramientas">
             <td><img class=" img-thumbnail" [src]="herramienta.image" [alt]="herramienta.name"></td>
-            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.name}}</td>
-            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.type}}</td>
-            <td [ngClass]="{clearance: herramienta.clearance}">{{herramienta.price | currency}}</td>
-            <td><span class="badge text-bg-warning" *ngIf="herramienta.stock ==0;">SIN STOCK</span>
-                <span class="badge bg-secondary" *ngIf="herramienta.stock !=0;">{{herramienta.stock}}</span>
+            <td [ngClass]="{'clearance': herramienta.clearance}">
+                {{herramienta.name}}
             </td>
-            <td><button type="button" class="btn btn-danger btn-sm" (click)="donwQuantity(herramienta)">-</button>
-                <input type="text" 
-                [(ngModel)]="herramienta.quantity"
-                (keyup)="onChangeQuantity($event)">
-                <button type="button" class="btn btn-success btn-sm" (click)="upQuantity(herramienta)">+</button>
+            <td [ngClass]="{'clearance': herramienta.clearance}">
+                {{herramienta.type}}
+            </td>
+            <td ><span [ngClass]="{'clearance': herramienta.clearance}" *ngIf="herramienta.clearance; else SIN">
+                {{herramienta.price*0.8 | currency}}</span>
+                <ng-template #SIN>
+                    <span>{{herramienta.price | currency}}</span>
+                </ng-template>
+            </td>
+            <td><span class="badge text-bg-warning" *ngIf="herramienta.stock ==0; else STOCK">SIN STOCK</span>
+
+                <ng-template #STOCK>
+                    <span class="badge bg-secondary">{{herramienta.stock}}</span>
+                </ng-template>
+                
             </td>
             <td>
-                <button type="button" class="btn btn-light btn-sm">Comprar</button>
+                    <app-herramientas-input [(quantity)]="herramienta.quantity" [maxStock]="herramienta.stock" *ngIf="herramienta.stock"></app-herramientas-input>
+            </td>
+            <td>
+                <img class="btn img-thumbnail" src="/assets/img/buy.png" alt="img-buy" (click)="addToCart(herramienta)">
             </td>
         </tr>
     </tbody>
 </table>
+<h5>*El articulo que este en color verde el mismo cuenta con descuento del 10%</h5>

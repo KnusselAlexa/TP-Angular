@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
+import { HerramientasCartService } from '../herramientas-cart.service';
+import { HerramientasDataService } from '../herramientas-data.service';
 import {Herramienta} from './Herramienta';
+
 
 
 @Component({
@@ -9,66 +12,32 @@ import {Herramienta} from './Herramienta';
 })
 export class HerramientasListComponent implements OnInit {
 
-  herramientas: Herramienta[] = [
-  {
-    name:'Pala',
-    type:'Punta', 
-    price:2000,
-    stock:0, 
-    image:"",
-    clearance: false,
-    quantity: 0,
-  },
-  {
-    name:'Destornillador',
-    type:'Paleta', 
-    price:250,
-    stock:10, 
-    image:"",
-    clearance: true,
-    quantity: 0,
-  },
-  {
-    name:'Llave tubo',
-    type:'12"', 
-    price:300,
-    stock:15, 
-    image:"",
-    clearance: false,
-    quantity: 0,
-  },
-  {
-    name:'Martillo',
-    type:'Chapista', 
-    price:1500,
-    stock:8, 
-    image:"",
-    clearance: false,
-    quantity: 0,
-  }
-]
-  constructor() { }
+  @Input()
+  herramientas: Herramienta [] = [];
 
-  ngOnInit(): void {
-  }
+  constructor(private cart: HerramientasCartService){
+  
+}
 
-  upQuantity(herramienta: Herramienta): void {
+ngOnInit(): void {
+this.checkStock();
+}
 
-    if (herramienta.quantity < herramienta.stock)
-    herramienta.quantity ++;
+addToCart (herramienta: Herramienta): void {
+  this.cart.addToCart(herramienta);
+  herramienta.stock -= herramienta.quantity;
+  herramienta.quantity = 0;
+}
 
-  }
-
-  donwQuantity(herramienta: Herramienta): void {
-    if (herramienta.quantity >0)
-    herramienta.quantity --;
-
-  }
-  onChangeQuantity (event: any): void {
-    if ((event.key > "9") ||(event.key < "0")) {
-      alert("Por favor ingrese un numero");
-      event.preventDefault ();
+checkStock () :void {
+  let auxList: Herramienta [] = this.cart.getCartlist();
+  for (let i=0; i<this.herramientas.length; i++){
+    for (let j=0; j< auxList.length; j++){
+      if (this.herramientas[i].id == auxList[j].id) {
+        this.herramientas[i].stock += auxList[j].quantity;
+      }
     }
   }
+}
 
 }

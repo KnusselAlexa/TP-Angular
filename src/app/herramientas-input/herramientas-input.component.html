@@ -1,1 +1,11 @@
-<p>herramientas-input works!</p>
+<div class="input-group">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button type="button" class="btn btn-danger btn-sm" (click)="donwQuantity()">-</button>
+        </div>
+        <input type="text" class="Rent" [(ngModel)]="quantity" (keyup)="onChangeQuantity($event)">
+        <div class="input-group-prepend">
+            <button type="button" class="btn btn-success btn-sm" (click)="upQuantity()">+</button>
+        </div>
+    </div>
+</div>

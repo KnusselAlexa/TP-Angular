@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,8 @@ import { HerramientasBuyComponent } from './herramientas-buy/herramientas-buy.co
 import { HerramientasCartComponent } from './herramientas-cart/herramientas-cart.component';
 import { HerramientasListComponent } from './herramientas-list/herramientas-list.component';
 import { HerramientasInputComponent } from './herramientas-input/herramientas-input.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { HerramientaSellComponent } from './herramienta-sell/herramienta-sell.component'
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { FormsModule } from '@angular/forms'
     HerramientasBuyComponent,
     HerramientasCartComponent,
     HerramientasListComponent,
-    HerramientasInputComponent
+    HerramientasInputComponent,
+    HerramientaSellComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
