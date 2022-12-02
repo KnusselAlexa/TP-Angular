@@ -2,7 +2,6 @@ nav {
     padding: 0%;
     top: 0px;
     width: 100%;
-
 }
 
 div.container-fluid {
@@ -11,13 +10,6 @@ div.container-fluid {
 
 .container {
     padding: 5px;
-}
-
-Footer {
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    background-color: rgb(133, 127, 127);
 }
 
 div.container-fluid a.navbar-brand {
@@ -33,9 +25,10 @@ a.nav-link {
 
 footer {
     position: relative;
-    width: 100%;
+    text-align: center;
     height: 50px;
-    bottom: 0;
+    line-height: 50px;
+    bottom: 0% !important;
     font-style: italic;
     background-color: rgb(155, 52, 78);
 }
