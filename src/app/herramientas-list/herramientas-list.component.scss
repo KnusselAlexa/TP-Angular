@@ -1,7 +1,31 @@
 .clearance {
-    color: rgb(15, 245, 15);
+    color: rgb(76, 207, 16);
 }
 
 .Encabezado {
     text-align: center;
+}
+
+h4 {
+    text-align: center;
+    font-style: oblique;
+    color: rgb(65, 64, 64);
+    margin-bottom: 20px;
+    font-size: xx-large;
+
+}
+
+th {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(134, 32, 59);
+}
+
+tbody {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h5 {
+    text-align: center;
+    text-decoration: overline;
+    color: rgb(76, 207, 16);
 }
