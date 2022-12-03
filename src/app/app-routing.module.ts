@@ -6,6 +6,9 @@ import { HerramientasHomeComponent } from './herramientas-home/herramientas-home
 
 const routes: Routes = [
 
+  { path: '',
+  component: HerramientasHomeComponent
+},
   { path: 'home',
     component: HerramientasHomeComponent
 },
