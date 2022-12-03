@@ -9,13 +9,19 @@ export class HerramientasCartService {
 
   private _cartList: Herramienta[] = [];
   private _totalShop: number = 0;
-  private _auxSell: boolean = false;
+  private _auxSeeBuy: boolean = false;
+  private _auxFinalBuy: boolean = false;
 
   cartList: BehaviorSubject<Herramienta[]> = new BehaviorSubject(this._cartList);
 
   totalShop: BehaviorSubject<number> = new BehaviorSubject(this._totalShop);
 
-  auxSell: BehaviorSubject<boolean> = new BehaviorSubject(this._auxSell);
+  auxSeeBuy: BehaviorSubject<boolean> = new BehaviorSubject(this._auxSeeBuy);
+
+  auxFinalBuy: BehaviorSubject<boolean> = new BehaviorSubject(this._auxFinalBuy);
+
+
+
 
   constructor() { 
   }
@@ -28,19 +34,21 @@ export class HerramientasCartService {
     this.cartList.next([]); 
     this._cartList = [];
   }
+  
   public deletetotalShop(): void {
     this.totalShop.next(0); 
-    this._totalShop = 0;
-    
+    this._totalShop = 0;   
   }
 
-  public deleteAuxSell (): void {
-    this._auxSell = false
-    this.auxSell.next(false);
-
+  public deleteAuxSeebuy (): void {
+    this.auxSeeBuy.next(false);
+    this._auxSeeBuy = false;
   }
 
-
+  public deleteAuxFinalBuy (): void {
+    this.auxFinalBuy.next(false);
+    this._auxFinalBuy = false;
+  }
   
   addToCart (herramienta:Herramienta) {
     if (herramienta.quantity >0) {
@@ -52,17 +60,12 @@ export class HerramientasCartService {
         item.quantity += herramienta.quantity;
       }
       this.cartList.next(this._cartList);
+      this.auxSeeBuy.next(true);
+      
     }
   }
 
-
-  seeCartList (): boolean {
-    return this._cartList.length>0;
-    }
-
-
-
-totalBuy() {
+totalCart() {
   this._totalShop = 0;
   for(let i = 0; (i<this._cartList.length); i++){
     if (this._cartList[i].clearance) {
@@ -72,7 +75,7 @@ totalBuy() {
     }
   }
   this.totalShop.next(this._totalShop);
-  this.auxSell.next(true);
+  this.auxFinalBuy.next(true);
 }
 
 }

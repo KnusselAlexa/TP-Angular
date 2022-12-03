@@ -11,7 +11,6 @@ import { HerramientasCartComponent } from './herramientas-cart/herramientas-cart
 import { HerramientasListComponent } from './herramientas-list/herramientas-list.component';
 import { HerramientasInputComponent } from './herramientas-input/herramientas-input.component';
 import { FormsModule } from '@angular/forms';
-import { HerramientaSellComponent } from './herramienta-sell/herramienta-sell.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { HerramientaSellComponent } from './herramienta-sell/herramienta-sell.co
     HerramientasCartComponent,
     HerramientasListComponent,
     HerramientasInputComponent,
-    HerramientaSellComponent
   ],
   imports: [
     BrowserModule,

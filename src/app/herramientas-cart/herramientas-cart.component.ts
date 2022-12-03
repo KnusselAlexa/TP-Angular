@@ -1,6 +1,4 @@
-import { DomElementSchemaRegistry } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HerramientasCartService } from '../herramientas-cart.service';
 import { HerramientasDataService } from '../herramientas-data.service';
 import { Herramienta } from '../herramientas-list/Herramienta';
